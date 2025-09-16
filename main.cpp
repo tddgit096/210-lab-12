@@ -33,30 +33,41 @@ int main(){
     else
         cout<<"File not found.\n";
     
-    //report size:
+    //report size.
     cout<<"Array Size: "<<sfx.size()<<endl;
     cout<<"Elements:";
     for(string val: (sfx)) cout<< val<<" "; cout<<endl;
-    cout<<"First Element:"<<sfx.front()<<endl;
-    cout<<"Last Element:"<<sfx.back()<<endl;
+    cout<<"First Element: "<<sfx.front()<<endl;
+    cout<<"Last Element: "<<sfx.back()<<endl;
     cout<<"Is it Empty? "<< (sfx.empty() ? "No": "Yes")<<endl;  //? operator can be used with booleans for terse expressions. (False : True) 
-    cout<<"Address:" << sfx.data();
+    cout<<"Address:" << sfx.data()<<endl;
 
     //using iterators.
     sort(sfx.begin(),sfx.end());
     cout<<"Array Sorted: ";
-    for(double val:sfx){cout<<val<<" "; cout<<endl;}
-    sort(sfx.end(),sfx.begin());
-    cout<<"Array Reverse Sorted: ";                 //sort in reverse
-    for(double val:sfx){cout<<val<<" "; cout<<endl;}
+    for(string val : sfx) cout<<val<<" "; cout<<endl;
+    //sort in reverse
+    sort(sfx.rbegin(),sfx.rend());
+    cout<<"Array Reverse Sorted: ";                 
+    for(string val : sfx) cout<<val<<" "; cout<<endl;
 
     //find.
     string target = "zap";
     array<string,SFX_SIZE>::iterator it =find(sfx.begin(),sfx.end(),target); //make iterator and fill it with the find target (the element's location)
     if(it!=sfx.end())   //not pointing to end means it is found
-        cout<<"Element \""<< target<<"\" found in position " << it - sfx.begin()<<endl;
+        cout<<"Element \""<< target<<"\" found in index position " << it - sfx.begin()<<endl;
     else
         cout<<"Element "<<target<<" not found.\n";
 
+    //fill.
+    fill(sfx.begin(),sfx.end(),"empty");
+    cout<<"Array filled with \"empty\": ";
+    for(string val: sfx) cout<< val<<" "; cout<<endl;
+
+    array<char, 3> row1 = {'x','o',' '};
+    array<char, 3> row2 = {'o','x','x'};
+    array<char, 3> row3 = {'o',' ','o'};
+    array<array<char,3>,3> master = {row1,row2,row3};
+    cout<<"Middle Element of a 2d Array "<<master[1][1]<<endl;
     return 0;
 }
