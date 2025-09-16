@@ -36,5 +36,13 @@ int main(){
     cout<<"Array Size: "<<sfx.size()<<endl;
     cout<<"Elements:";
     for(string val: (sfx)) cout<< val<<" "; cout<<endl;
+    cout<<"First Element:"<<sfx.front()<<endl;
+    cout<<"Last Element:"<<sfx.back()<<endl;
+    cout<<"Is it Empty? "<< (sfx.empty() ? "No": "Yes")<<endl;  //? operator can be used with booleans for terse expressions. (False : True) 
+    cout<<"Address:" << sfx.data();
+
+    //using iterators.
+    
+
     return 0;
 }
